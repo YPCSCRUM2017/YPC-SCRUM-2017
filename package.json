@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZakStrassberg/YPC-scrum.git"
+    "url": "git+https://github.com/YPCSCRUM2017/YPC-SCRUM-2017.git"
   },
   "author": "ypc-scrum",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ZakStrassberg/YPC-scrum/issues"
+    "url": "https://github.com/YPCSCRUM2017/YPC-SCRUM-2017/issues"
   },
-  "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme",
+  "homepage": "https://github.com/YPCSCRUM2017/YPC-SCRUM-2017#readme",
   "dependencies": {
     "angular-route": "^1.6.1",
     "aws-sdk": "^2.7.21",
