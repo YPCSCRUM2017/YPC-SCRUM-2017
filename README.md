@@ -12,8 +12,9 @@ The Young Professional Council (YPC) is composed of emerging leaders in the busi
 ### **Atif Kamran**
 ### **Benjamin Huang** - [GitHub](http://github.com/coolconfucius) - [LinkedIn](http://www.linkedin.com/in/benjamin-t-huang) - [Website](coolconfucius.github.io/portfolio2017/#)
 ### **Mohammed Abid** - [GitHub](http://github.com/mabid2) - [LinkedIn](http://www.linkedin.com/in/mohammedkamranabid) - [Website](http://www.kamranabid.com/)
-### **Nathan Pascua - - [GitHub](http://github.com/mrgeecue) - [LinkedIn](http://www.linkedin.com/in/npascua) 
+### **Nathan Pascua** - [GitHub](http://github.com/mrgeecue) - [LinkedIn](http://www.linkedin.com/in/npascua) 
 ### **Trina Haque** - [GitHub](https://github.com/trinahaque) - [LinkedIn](https://www.linkedin.com/in/trina-haque/)
+
 
 ### Team Prime
 ### **Adam Aly** - [GitHub](http://github.com/AdamAly831) - [LinkedIn](http://www.linkedin.com/in/adamalyart) - [Website](http://www.adamalyart.com/)
