@@ -1,0 +1,258 @@
+<% include partials/head.ejs %>
+
+<body>
+  <script>
+  window.onload = function(){
+
+    var url = document.location.toString();
+    if (url.match('#')) {
+      $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+    }
+
+    //Change hash for page-reload
+    $('.nav-tabs a[href=#' + url.split('#')[1] + ']').on('shown', function (e) {
+      window.location.hash = e.target.hash;
+    });
+  }
+  </script>
+  <!-- total container -->
+  <div class="container">
+
+    <% include partials/navbar.ejs %>
+
+    <!--
+    This is the admin panel. It lists the blog posts in a table
+  -->
+
+  <!--
+
+  to do list
+
+  -create routes for create/show/edit/delete (RESTful)
+
+  -create link to form for creating a new blog post
+  -create link to sign out
+
+  -create link to edit page
+  -double check format for date created time
+  -create link to confirm delete
+-->
+
+
+
+<h1>Manage Content</h1>
+
+<ul class="nav nav-tabs" role="tablist" data-toggle="tab">
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#executives" aria-controls="executives" role="tab" data-toggle="tab">Executives</a></li>
+  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="home">.1</div>
+  <div role="tabpanel" class="tab-pane" id="executives">
+    <h2>Current executives:</h2>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <% for (executive of executives)  { %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading-<%= executive._id %>">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-<%= executive._id %>" aria-expanded="true" aria-controls="collapse-<%= executive._id %>">
+                <%= executive.content.name %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse-<%= executive._id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-<%= executive._id %>">
+            <div class="panel-body">
+              <form class="form-horizontal" action="/admin/content/<%= executive._id %>" method="post">
+                <input type="hidden" name="type" value="executive">
+                <fieldset>
+
+                  <!-- Form Name -->
+                  <!-- <legend><h2>Edit:</h2></legend> -->
+
+                  <!-- Text input-->
+                  <%= executive %>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="name">Name</label>
+                    <div class="col-md-4">
+                      <input name="name" type="text" placeholder="Elliot Justice" class="form-control input-md" required="" value='<%= executive.content.name %>'>
+
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="role">Role</label>
+                    <div class="col-md-4">
+                      <input name="role" type="text" class="form-control input-md"  value="<%= executive.content.role %>">
+
+                    </div>
+                  </div>
+
+                  <!-- Textarea -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="text">Description</label>
+                    <div class="col-md-4">
+                      <textarea class="form-control" id="text" name="text"><%= executive.content.text %></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="role">Image</label>
+                    <div class="col-md-4">
+                      <input name="image" type="text" class="form-control input-md"  value="<%= executive.content.image %>">
+
+                    </div>
+                  </div>
+
+                  <!-- Prepended text-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="">Facebook profile</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <span class="input-group-addon">facebook.com/</span>
+                        <input name="facebook" class="form-control" type="text"  value="<%= executive.content.facebook %>">
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!-- Prepended text-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="twitter">Twitter profile</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <span class="input-group-addon">twitter.com/</span>
+                        <input name="twitter" class="form-control" type="text"  value="<%= executive.content.twitter %>">
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!-- Prepended text-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="linkedin">LinkedIn Profile</label>
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <span class="input-group-addon">linkedin.com/in/</span>
+                        <input name="linkedin" class="form-control" type="text"  value="<%= executive.content.linkedin %>">
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- Button -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit"></label>
+                    <div class="col-md-4">
+                      <button class="submit" class="btn btn-primary">Update</button>
+                    </div>
+                  </div>
+                </fieldset>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+
+      <form class="form-horizontal" action="/admin/content/" method="post">
+        <input type="hidden" name="type" value="executive">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend><h2>Add new executive:</h2></legend>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Name</label>
+            <div class="col-md-4">
+              <input id="name" name="name" type="text" placeholder="Elliot Justice" class="form-control input-md" required="">
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="role">Role</label>
+            <div class="col-md-4">
+              <input id="role" name="role" type="text" placeholder="President" class="form-control input-md">
+
+            </div>
+          </div>
+
+          <!-- Textarea -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="text">Description</label>
+            <div class="col-md-4">
+              <textarea class="form-control" id="text" name="text"></textarea>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="role">Image</label>
+            <div class="col-md-4">
+              <input id="image" name="image" type="text" placeholder="Image URL here" class="form-control input-md">
+
+            </div>
+          </div>
+
+          <!-- Prepended text-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="">Facebook profile</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">facebook.com/</span>
+                <input id="facebook" name="facebook" class="form-control" placeholder="samuel.e.justice" type="text">
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Prepended text-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="twitter">Twitter profile</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">twitter.com/</span>
+                <input id="twitter" name="twitter" class="form-control" placeholder="justice_elliot" type="text">
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Prepended text-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="linkedin">LinkedIn Profile</label>
+            <div class="col-md-4">
+              <div class="input-group">
+                <span class="input-group-addon">linkedin.com/in/</span>
+                <input id="linkedin" name="linkedin" class="form-control" placeholder="samuel-elliot-justice-29396750" type="text">
+              </div>
+
+            </div>
+          </div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+              <button id="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+
+      </form>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">.3.</div>
+    <div role="tabpanel" class="tab-pane" id="settings">.4.</div>
+  </div>
+
+</div>
+</body>
+</html>

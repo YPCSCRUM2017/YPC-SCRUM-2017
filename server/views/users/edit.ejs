@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Your Information</title>
+</head>
+<body>
+
+<!--
+
+	to do list
+
+	-route for edit
+	-check populated fields
+	-confirm links
+
+-->
+
+<h1>Edit Your Information</h1>
+<ul>
+	<li><a href="/">Go Back</a></li>
+	<li><a href="/">Sign Out</a></li>
+</ul>
+
+<!--
+	need user object from db
+	double check all fields to match db
+-->
+
+<form action="/user/edit/<%= user.id %>" method="POST">
+
+	<label>Email: <input type="text" name="email" value="<%= user.email %>"></label><br><br>
+
+	<label>First Name: <input type="text" name="first_name" value="<%= user.first_name %>"></label><br><br>
+
+	<label>Last Name: <input type="text" name="last_name" value="<%= user.last_name %>"></label><br><br>
+
+	<label>Phone: <input type="text" name="phone" value="<%= user.phone %>"></label><br><br>
+
+	<label>Position: <input type="text" name="position" value="<%= user.position %>"></label><br><br>
+
+	<label>Company: <input type="text" name="company" value="<%= user.company %>"></label><br><br>
+
+	<label><b>Mailing Address</b></label><br><br>
+	<label>Street Number: <input type="text" name="street" value="<%= user.street %>"></label><br><br>
+	<label>City: <input type="text" name="city" value="<%= user.city %>"></label><br><br>
+	<label>State: <input type="text" name="state" value="<%= user.state %>"></label><br><br>
+	<label>Zipcode: <input type="text" name="zipcode" value="<%= user.zipcode %>"></label><br><br>
+
+	<label> test:
+	<input type="checkbox" name="test" value="test">
+	</label>
+
+	<!-- Should this be a separate form?? -->
+
+	<h2>Sign Up for a Committee</h2>
+	<p>Please check your preferred committee(s):</p>
+	<% if(user.treasury){ %>
+		<label><input type="checkbox" name="committee[treasury]" checked="checked">Treasury</label><br>
+	<% } else { %>
+		<label><input type="checkbox" name="committee[treasury]">Treasury</label><br>
+	<% } %>
+
+	<% if(user.membership){ %>
+		<label><input type="checkbox" name="committee[membership]" checked="checked">Membership</label><br>
+	<% } else { %>
+		<label><input type="checkbox" name="committee[membership]">Membership</label><br>
+	<% } %>
+
+
+	<% if(user.events){ %>
+		<label><input type="checkbox" name="committee[events]" checked="checked">Events</label><br>
+	<% } else { %>
+		<label><input type="checkbox" name="committee[events]">Events</label><br>
+	<% } %>
+
+	<% if(user.corporate){ %>
+		<label><input type="checkbox" name="committee[corporate]" checked="checked">Corporate Development & Partnerships</label><br>
+	<% } else { %>
+		<label><input type="checkbox" name="committee[corporate]">Corporate Development & Partnerships</label><br>
+	<% } %>
+
+	<% if(user.volunteer){ %>
+		<label><input type="checkbox" name="committee[volunteer]" checked="checked">Volunteer</label><br>
+	<% } else { %>
+			<label><input type="checkbox" name="committee[volunteer]">Volunteer</label><br>
+	<% } %>
+
+
+
+	<input type="submit" value="Update Information">
+</form>
+
+<a href="/"><button>Go Back</button></a>
+
+</body>
+</html>

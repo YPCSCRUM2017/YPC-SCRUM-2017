@@ -1,0 +1,25 @@
+<% include ../partials/head.ejs %>
+
+<body>
+    <!-- total container -->
+    <div class="container">
+
+        <% include ../partials/navbar.ejs %>
+
+        <h1>Are you sure you want to delete <%= post.title %>?</h1>
+        <br>
+
+        <h2>Post Title: <%= post.title %></h2>
+		<h2>Post Text: <%= post.body %></h2>
+		<br><br>
+		
+		<form action="/posts/<%= post.id %>/destroy" method="post">
+
+			<div class="form-group">
+				<a class="btn btn-default" href="/admin" role="button">Go Back</a>
+				<input class="btn btn-danger" type="submit" value="Delete Post">
+			</div>
+		</form>
+    </div>
+</body>
+</html>

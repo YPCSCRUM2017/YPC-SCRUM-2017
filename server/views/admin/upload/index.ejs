@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>S3 Upload</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
+    <script src="js/upload.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+    .bar {
+      height: 18px;
+      background: #0073e5;
+      border-radius: 5px;
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>S3 Upload</h1>
+    <form>
+      <div class="inputArea">
+        <input class="fileInput" type="file" name="file" />
+      </div>
+      <div class="progress">
+        <div class="bar" style="width: 0%;"></div>
+      </div>
+    </form>
+    <hr>
+    <table>
+      <tr>
+        <th>File Name</th>
+        <th>Size (kb)</th>
+        <th>Last Modified</th>
+        <th>Actions</th>
+        <th></th>
+      </tr>
+      <% for (oneFile of allFiles) { %>
+      <tr>
+        <td><%= oneFile.Key %></td>
+        <td><%= oneFile.Size %></td>
+        <td><%= oneFile.LastModified %></td>
+        <td><a href="https://<%= bucketName %>.s3.amazonaws.com/<%=oneFile.Key%>"><button type="button" name="button">View</button></a></td>
+        <td><button type="button" class="deleteButtons" id="<%= oneFile.Key %>">Delete</button></td>
+      </tr>
+      <% } %>
+    </table>
+    <hr>
+    <input type="hidden" id="refreshed" value="no">
+    <script type="text/javascript">
+      onload=function(){
+        var e=document.getElementById("refreshed");
+        if(e.value=="no"){
+          e.value="yes";
+        }
+        else{
+          e.value="no";location.reload();
+        }
+      }
+    </script>
+  </body>
+</html>

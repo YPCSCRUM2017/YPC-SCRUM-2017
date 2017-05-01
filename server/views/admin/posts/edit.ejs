@@ -1,0 +1,70 @@
+<% include ../partials/head.ejs %>
+
+<body>
+  <script src="./../../../../js/imageManipulation.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
+  <script src="./../../../../js/upload.js"></script>
+  <style media="screen">
+    .photoGallery {
+      display: block;
+      max-width:230px;
+      max-height:95px;
+      width: auto;
+      height: auto;
+    }
+    .bar {
+      height: 18px;
+      background: #0073e5;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+    <!-- total container -->
+    <div class="container">
+
+        <% include ../partials/navbar.ejs %>
+
+        <h1>Update <%= post.title %></h1>
+
+	<form class="PostForm" action="/posts/<%= post.id %>/edit" method="POST">
+	  <div class="form-group">
+	    <label for="blog-title">Blog Post Title</label>
+	    <input type="text" class="form-control" id="blog-title" value="<%= post.title %>" name="title" required>
+	  </div>
+	  <div class="form-group">
+	    <label for="blog-text">Blog Post Text</label>
+	    <textarea class="form-control" id="blog-text" placeholder="Text" rows="3" name="text" required><%= post.body %></textarea>
+	  </div>
+    <div class="form-group">
+      <label for="currentImage">Current Image</label>
+      <% if(post.photo_link) {%>
+      <div class="container imageContainers">
+        <img class="photoGallery" src="<%= post.photo_link %>" alt="#">
+        <a href="#" class="removeImage">Delete</a>
+        <input type="hidden" name="s3Url" value="<%= post.photo_link %>">
+      </div>
+      <% } else { %>
+      <p>No image attached</p>
+      <% } %>
+
+    </div>
+
+    <div class="inputArea form-group">
+      <label for="updateLocalInputFile">Attach Local Image</label>
+      <input id="updateLocalInputFile" class="fileInput" type="file" name="file" />
+    </div>
+    <div class="progress">
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+
+	  <a class="btn btn-default" href="/admin" role="button">Go Back</a>
+
+
+		<input class="btn btn-success" type="submit" value="Update Post">
+    <script src=""></script>
+	</form>
+    </div>
+</body>
+</html>

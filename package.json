@@ -1,0 +1,35 @@
+{
+  "name": "ypc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZakStrassberg/YPC-scrum.git"
+  },
+  "author": "ypc-scrum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZakStrassberg/YPC-scrum/issues"
+  },
+  "homepage": "https://github.com/ZakStrassberg/YPC-scrum#readme",
+  "dependencies": {
+    "angular-route": "^1.6.1",
+    "aws-sdk": "^2.7.21",
+    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.0",
+    "body-parser": "^1.17.1",
+    "crypto": "0.0.3",
+    "ejs": "^2.5.5",
+    "express": "^4.15.2",
+    "express-session": "^1.14.2",
+    "html": "^1.0.0",
+    "mailchimp-api-v3": "^1.7.0",
+    "mongoose": "latest",
+    "mysql": "^2.12.0",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,53 @@
+<% include partials/head.ejs %>
+
+<body>
+    <!-- total container -->
+    <div class="container">
+
+        <% include partials/navbar.ejs %>
+
+        <!--
+        	This is the admin panel. It lists the blog posts in a table
+        -->
+
+        <!--
+
+        	to do list
+
+        	-create routes for create/show/edit/delete (RESTful)
+
+        	-create link to form for creating a new blog post
+        	-create link to sign out
+
+        	-create link to edit page
+        	-double check format for date created time
+        	-create link to confirm delete
+        -->
+
+        <h1>Admin Panel</h1>
+        <br>
+        <a class="btn btn-success" href="/admin/posts/new" role="button">Create a new blog post</a>
+        <br><br>
+        <table class="table">
+        	<thead>
+        		<th>Post Title</th>
+        		<th>Date Created</th>
+                <th>Last Updated</th>
+        		<th>Actions</th>
+        	</thead>
+        	<tbody>
+        	<% for (post of posts){ %>
+        		<tr>
+        			<td><a href="posts/<%= post.id %>"><%= post.title %></a></td>
+        			<td><%= post.created_at %></td>
+                    <td><%= post.updated_at %></td>
+        			<!-- Zak wants delete to be a modal -->
+        			<td><a href="/admin/posts/<%= post.id %>/edit">Edit</a> | <a href="/admin/posts/<%= post.id %>/delete">Delete</a></td>
+        		</tr>
+        	<% } %>
+        	</tbody>
+        </table>
+
+     </div>
+</body>
+</html>

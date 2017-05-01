@@ -1,0 +1,51 @@
+<% include ../partials/head.ejs %>
+
+<body>
+    <style>
+    .bar {
+      height: 18px;
+      background: #0073e5;
+      border-radius: 5px;
+      text-align: center;
+    }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.5.7/jquery.fileupload.js"></script>
+    <script src="./../../../../js/upload.js"></script>
+    <!-- total container -->
+    <div class="container">
+
+        <% include ../partials/navbar.ejs %>
+
+        <h1>Create a New Blog Post</h1>
+
+	<form class="PostForm" action="/posts" method="POST">
+	  <div class="form-group">
+	    <label for="blog-title">Blog Post Title</label>
+	    <input type="text" class="form-control" id="blog-title" placeholder="Title" name="title" required>
+	  </div>
+	  <div class="form-group">
+	    <label for="blog-text">Blog Post Text</label>
+	    <textarea class="form-control" id="blog-text" placeholder="Text" rows="3" name="text" required></textarea>
+	  </div>
+    <div class="inputArea form-group">
+      <label for="localInputFile">Attach Local Image</label>
+      <input id="localInputFile" class="fileInput" type="file" name="file" />
+    </div>
+    <div class="progress">
+      <div class="bar" style="width: 0%;"></div>
+    </div>
+	  <!-- <div class="form-group">
+	    <label for="exampleInputFile">Attach Image</label>
+	    <input type="file" id="exampleInputFile">
+	    <br>
+	  </div>
+	  <a class="btn btn-default" href="/admin" role="button">Go Back</a> -->
+
+
+		<input class="btn btn-success" type="submit" value="Post">
+	</form>
+    </div>
+</body>
+</html>
