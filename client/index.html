@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,8 @@
     <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js" charset="utf-8"></script>
     <script src="assets/app.js" charset="utf-8"></script>
+    <script src="assets/controllers/main_controller.js" charset="utf-8"></script>
+
     <!-- <script src="assets/factories/friendsFactory.js" charset="utf-8"></script> -->
 
 
@@ -50,7 +52,7 @@
 
 
   	</head>
-  	<body>
+  	<body ng-controller="main_controller">
 
   	<div class="fh5co-loader"></div>
 
@@ -84,7 +86,7 @@
                   <li><a href="#">Executives</a></li>
                   <li><a href="#">Donate</a></li>
                   <li><a href="#">Contact</a></li>
-  								<%- navBar %>
+  								<!-- <%- navBar %> -->
   							</ul>
   						</div>
   					</div>
@@ -92,6 +94,8 @@
   			</div>
   		</nav>
 
+      <div ng-view="">
+      </div>
 
       <!-- jQuery -->
     	<script src="js/jquery.min.js"></script>
