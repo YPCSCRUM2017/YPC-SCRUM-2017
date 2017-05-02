@@ -7,7 +7,7 @@ $routeProvider
       controller: 'main_controller'
   })
   .when('/blog',{
-      console.log();("HIIIIIIIIIIIIII"),
+      // console.log("HIIIIIIIIIIIIII");
       templateUrl: '../partials/blog.html',
       controller:'main_controller'
   })
