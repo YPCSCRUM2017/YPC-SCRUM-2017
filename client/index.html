@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
@@ -7,6 +8,7 @@
     <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js" charset="utf-8"></script>
     <script src="assets/app.js" charset="utf-8"></script>
+
     <script src="assets/controllers/main_controller.js" charset="utf-8"></script>
 
     <!-- <script src="assets/factories/friendsFactory.js" charset="utf-8"></script> -->
@@ -52,7 +54,9 @@
 
 
   	</head>
+
   	<body ng-controller="main_controller">
+
 
   	<div class="fh5co-loader"></div>
 
@@ -80,13 +84,12 @@
   						</div>
   						<div class="col-xs-10 text-right menu-1">
   							<ul id="nav_links">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Events</a></li>
-                  <li><a href="!#/blog">Blog</a></li>
-                  <li><a href="#">Executives</a></li>
-                  <li><a href="#">Donate</a></li>
-                  <li><a href="#">Contact</a></li>
-  								<!-- <%- navBar %> -->
+                  <li><a href="#!/">Home</a></li>
+                  <li><a href="#!/events">Events</a></li>
+                  <li><a href="#!/blog">Blog</a></li>
+                  <li><a href="#!/execs">Executives</a></li>
+                  <li><a href="#!/donate">Donate</a></li>
+                  <li><a href="#!/contact">Contact</a></li>
   							</ul>
   						</div>
   					</div>
@@ -96,6 +99,7 @@
 
       <div ng-view="">
       </div>
+
 
       <!-- jQuery -->
     	<script src="js/jquery.min.js"></script>
@@ -114,4 +118,5 @@
     	<script src="js/jquery.stellar.min.js"></script>
     	<!-- Main -->
     	<script src="js/main.js"></script>
+    </body>
 </html>
